@@ -1,0 +1,9 @@
+{
+  "name": "ensiieAPP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "db22402a",
+  "app_id": ""
+}

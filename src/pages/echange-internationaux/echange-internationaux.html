@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Echange Internationaux
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="page13">
+
+  <form id="echangeInternationaux-form5">
+    <ion-searchbar placeholder="Rechercher (Continent, Pays, Ville) " name="SearchbarExchange" (ionInput)="filterItems($event)"></ion-searchbar>
+
+    <ion-item id="echangeInternationaux-toggle2">
+      <ion-label>
+        Carte
+      </ion-label>
+      <ion-toggle color="positive" checked="false"></ion-toggle>
+    </ion-item>
+
+  </form>
+
+  <ion-card *ngFor="let item of exchangeItem">
+    <ion-list>
+
+      <img src="assets/img/{{item.imageName}}.jpg" />
+      <ion-item>
+        <div style="text-align:center;" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#212121;font-size:18px;">
+            {{item.categoryString}}
+          </p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+
+</ion-content>
