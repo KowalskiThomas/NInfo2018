@@ -72,9 +72,12 @@ class DB:
 
     @staticmethod
     def add_ue(ue : classes.UE):
-        SQL = "INSERT INTO UE (Name, Creation) VALUES (%s, %s)"
+        SQL = "INSERT INTO UE (Name, Creation) VALUES (%s, %s) RETURNING ID"
         DB.cur.execute(SQL, (ue.name, time.time()))
+        new_ue_id,  = DB.cur.fetchone()
         DB.conn.commit()
+
+        return DB.get_ue(new_ue_id)
 
     @staticmethod
     def get_all_ue():
@@ -98,31 +101,83 @@ class DB:
 
         return DB.get_ue_comment(new_record_id)
 
+    @staticmethod
+    def add_announcement(ann : classes.Announcement):
+        SQL = "INSERT INTO Announcements (Author, Content, Creation) VALUES (%s, %s, %s) RETURNING ID"
+        DB.cur.execute(SQL, (
+            ann.author,
+            ann.content,
+            time.time()
+        ))
+        new_ann_id, = DB.cur.fetchone()
+        DB.conn.commit()
+
+        return DB.get_announcement(new_ann_id)
+
+    @staticmethod
+    def get_announcement(ann_id):
+        SQL = "SELECT * FROM Announcements WHERE ID = %s"
+        DB.cur.execute(SQL, (ann_id, ))
+        result = DB.cur.fetchone()
+        if not result:
+            return None
+
+        return classes.Announcement.from_tuple(result)
+    
+    @staticmethod
+    def get_all_announcements():
+        SQL = "SELECT * FROM Announcements"
+        DB.cur.execute(SQL)
+        results = DB.cur.fetchall()
+        if not results:
+            return list()
+
+        l = list()
+        for r in results:
+            l.append(classes.Announcement.from_tuple(r))
+        return l
+
 DB.init()
 
 if __name__ == '__main__':
-    if "drop" in sys.argv:
+    CREATE_TABLE_SQL = [
+        "CREATE TABLE UE (ID SERIAL PRIMARY KEY, Name TEXT, Creation INTEGER)",
+        "CREATE TABLE Comments (ID SERIAL PRIMARY KEY, UE_ID INTEGER, Author TEXT, Content TEXT, Creation INTEGER)",
+        "CREATE TABLE Announcements (ID SERIAL PRIMARY KEY, Author TEXT, Content TEXT, Creation INTEGER)"
+    ]
+
+    if "create" in sys.argv:
+        print("Creating tables")
+        for sql in CREATE_TABLE_SQL:
+            sql = sql.replace("CREATE TABLE", "CREATE TABLE IF NOT EXISTS")
+            try:
+                print(sql)
+                DB.cur.execute(sql)
+            except Exception as e:
+                print(type(e), e)
+
+        DB.conn.commit()
+
+    elif "drop" in sys.argv:
         print("Dropping & creating tables")
         SQL = [
             "DROP SCHEMA public CASCADE;",
             "CREATE SCHEMA public;",
-            "CREATE TABLE UE (ID SERIAL PRIMARY KEY, Name TEXT, Creation INTEGER)",
-            "CREATE TABLE Comments (ID SERIAL PRIMARY KEY, UE_ID INTEGER, Author TEXT, Content TEXT, Creation INTEGER)"
-        ]
+        ] + CREATE_TABLE_SQL
 
         for sql in SQL:
             try:
                 print(sql)
                 DB.cur.execute(sql)
             except Exception as e:
-                print(type(e))
-                print(e)
+                print(type(e), e)
 
         DB.conn.commit()
 
     elif "addue" in sys.argv:
         name = input("UE Name: ")
-        DB.add_ue(classes.UE(name = name))
+        new_ue = DB.add_ue(classes.UE(name = name))
+        print(new_ue)
         print("Done")
 
     elif "getue" in sys.argv:
@@ -134,11 +189,12 @@ if __name__ == '__main__':
         ue_id = input("UE ID: ")
         author = input("Author Name: ")
         comment = input("Comment: ")
-        DB.add_comment(classes.UEComment(
+        new_comment = DB.add_comment(classes.UEComment(
             ue_id = ue_id,
             author = author,
             content = comment
         ))
+        print(new_comment)
         print("Done")
 
     elif "getcomments" in sys.argv:
@@ -147,3 +203,32 @@ if __name__ == '__main__':
         if ue:
             for c in ue.comments:
                 print(c)
+
+    elif "addann" in sys.argv:
+        author = input("Author Name: ")
+        annonce = input("Annonce: ")
+
+        ann = DB.add_announcement(classes.Announcement(
+            author = author,
+            content = annonce
+        ))
+
+    elif "getann" in sys.argv:
+        annonces = DB.get_all_announcements()
+        for ann in annonces:
+            print(ann)
+
+    elif "console" in sys.argv:
+        i = None
+        while "i not empty":
+            i = input("> ")
+            if i == '':
+                break
+
+            try:
+                DB.cur.execute(i)
+                DB.conn.commit()
+            except Exception as e:
+                DB.conn.rollback()
+                print(type(e), e)
+

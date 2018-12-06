@@ -26,7 +26,8 @@ class UE:
     def to_dict(self):
         return {
             "id": self.id,
-            "name": self.name
+            "name": self.name,
+            "created_at": self.creation_time
         }
 
 class UEComment:
@@ -56,5 +57,40 @@ class UEComment:
             "id": self.id,
             "ue_id": self.ue_id,
             "author": self.author,
-            "content": self.content
+            "content": self.content,
+            "created_at": self.creation_time
+        }
+
+class Announcement:
+    def __init__(self, ann_id = None, author = None, content = None, creation = None):
+        self.id = ann_id
+        self.author = author
+        self.content = content
+        self.creation = creation
+
+    @staticmethod
+    def from_tuple(t):
+        ann_id, author, content, creation = t
+        return Announcement(
+            ann_id, 
+            author, 
+            content, 
+            creation
+        )
+
+    def __repr__(self):
+        return "<Announcement {id}>".format(id = self.id)
+
+    def __str__(self):
+        return "{author}: '{content}'".format(
+            author = self.author,
+            content = self.content
+        )
+
+    def to_dict(self):
+        return {
+            "id" : self.id,
+            "author": self.author,
+            "content": self.content,
+            "created_at": self.creation
         }

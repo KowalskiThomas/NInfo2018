@@ -1,7 +1,8 @@
 from flask import Flask, request
 import json
-from db import DB
+
 from classes import *
+from db import DB
 import rer
 
 app = Flask(__name__)
@@ -87,5 +88,38 @@ def next_count(count):
         "response": next_rer
     })
 
+@app.route('/announcements/', methods = ['POST'])
+def new_announcement():
+    try:
+        author = request.form["author"]
+        content = request.form["content"]
+    except KeyError:
+        return json.dumps({
+            "status": 401,
+            "message": "Missing parameter"
+        })
+
+    new_ann = DB.add_announcement(Announcement(
+        author = author,
+        content = content
+    ))
+
+    return json.dumps({
+        "status": 200,
+        "response": new_ann.to_dict()
+    })
+
+@app.route('/announcements/', methods = ['GET'])
+def get_announcements():
+    announcements = DB.get_all_announcements()
+    return json.dumps({
+        "status": 200,
+        "response": [
+            x.to_dict() for x in announcements
+        ]
+    })   
+
+
 if __name__ == '__main__':
+    app.url_map.strict_slashes = False
     app.run(debug=True)
