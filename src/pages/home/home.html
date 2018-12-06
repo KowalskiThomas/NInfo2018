@@ -13,4 +13,12 @@
     <ion-icon name="beer"></ion-icon>
     Teste ton taux d'alcoolémie !
   </button>
+  <button ion-button icon-start on-click="initialise()">
+    <ion-icon name="sync"></ion-icon>
+    Réinitialisation des données
+  </button>
+  <ion-item>
+      <ion-label>Paris</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="parisTime"></ion-datetime>
+  </ion-item>
 </ion-content>

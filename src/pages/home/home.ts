@@ -8,6 +8,8 @@ import { AlertController } from 'ionic-angular';
 export class HomePage {
 
   const catchPhrase = "";
+  const drunkTime = new Date();
+  const tmp = 0;
 
   constructor(private alertCtrl: AlertController) {
 
@@ -33,7 +35,11 @@ export class HomePage {
         {
           text: 'Save',
           handler: data => {
-            this.catchPhrase = data;
+            if (this.catchPhrase === "") this.catchPhrase = data;
+            else if (this.catchPhrase !== data && this.tmp === 0) {
+              this.drunkTime = this.drunkTime.toLocaleString();
+              this.tmp++;
+            }
             console.log('Saved clicked');
           }
         }
@@ -42,6 +48,9 @@ export class HomePage {
     prompt.present();
   }
 
-  
+  initialise() {
+    this.drunkTime = "";
+    console.log(this.drunkTime);
+  }
 
 }
