@@ -17,6 +17,23 @@ class DB:
             sys.exit(1)
 
         DB.cur = DB.conn.cursor()
+        DB.create_tables()
+
+    CREATE_TABLE_SQL = [
+        "CREATE TABLE UE (ID SERIAL PRIMARY KEY, Name TEXT, Creation INTEGER)",
+        "CREATE TABLE Comments (ID SERIAL PRIMARY KEY, UE_ID INTEGER, Author TEXT, Content TEXT, Creation INTEGER)",
+        "CREATE TABLE Announcements (ID SERIAL PRIMARY KEY, Author TEXT, Content TEXT, Creation INTEGER)"
+    ]
+    @staticmethod
+    def create_tables():
+        for sql in DB.CREATE_TABLE_SQL:
+            sql = sql.replace("CREATE TABLE", "CREATE TABLE IF NOT EXISTS")
+            try:
+                print(sql)
+                DB.cur.execute(sql)
+            except Exception as e:
+                print(type(e), e)
+        DB.conn.commit()
 
     @staticmethod
     def get_comments_for_ue(ue_id):
@@ -140,30 +157,16 @@ class DB:
 DB.init()
 
 if __name__ == '__main__':
-    CREATE_TABLE_SQL = [
-        "CREATE TABLE UE (ID SERIAL PRIMARY KEY, Name TEXT, Creation INTEGER)",
-        "CREATE TABLE Comments (ID SERIAL PRIMARY KEY, UE_ID INTEGER, Author TEXT, Content TEXT, Creation INTEGER)",
-        "CREATE TABLE Announcements (ID SERIAL PRIMARY KEY, Author TEXT, Content TEXT, Creation INTEGER)"
-    ]
-
     if "create" in sys.argv:
         print("Creating tables")
-        for sql in CREATE_TABLE_SQL:
-            sql = sql.replace("CREATE TABLE", "CREATE TABLE IF NOT EXISTS")
-            try:
-                print(sql)
-                DB.cur.execute(sql)
-            except Exception as e:
-                print(type(e), e)
-
-        DB.conn.commit()
+        DB.create_tables()
 
     elif "drop" in sys.argv:
         print("Dropping & creating tables")
         SQL = [
             "DROP SCHEMA public CASCADE;",
             "CREATE SCHEMA public;",
-        ] + CREATE_TABLE_SQL
+        ] + DB.CREATE_TABLE_SQL
 
         for sql in SQL:
             try:
