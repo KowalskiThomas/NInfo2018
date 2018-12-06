@@ -5,10 +5,11 @@ class IncompleteObjectException(Exception):
         self.message = message
 
 class UE:
-    def __init__(self, ue_id = None, name = None, comments = None):
+    def __init__(self, ue_id = None, name = None, comments = None, creation_time = None):
         self.name = name
         self.id = ue_id
         self.comments = comments
+        self.creation_time = creation_time
 
     def __repr__(self):
         return "<UE {id}: {name}>".format(
@@ -29,11 +30,12 @@ class UE:
         }
 
 class UEComment:
-    def __init__(self, comment_id = None, ue_id = None, author = None, content = None):
+    def __init__(self, comment_id = None, ue_id = None, author = None, content = None, creation_time = None):
         self.id = comment_id
         self.ue_id = ue_id
         self.author = author
         self.content = content
+        self.creation_time = creation_time
 
     def __repr__(self):
         return "<UEComment {id} on {ue}>".format(

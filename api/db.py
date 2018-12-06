@@ -1,4 +1,5 @@
 import sys
+import time
 
 import classes
 
@@ -26,12 +27,13 @@ class DB:
             return list()
 
         returned = list()
-        for comment_id, ue_id, author, content in results:
+        for comment_id, ue_id, author, content, creation in results:
             returned.append(classes.UEComment(
                 comment_id,
                 ue_id,
                 author,
-                content
+                content,
+                creation_time = creation
             ))
         return returned
 
@@ -43,17 +45,35 @@ class DB:
         if not result:
             return None
 
-        ue_id, name = result
+        ue_id, name, creation = result
         return classes.UE(
             ue_id,
             name,
-            comments = DB.get_comments_for_ue(ue_id)
+            comments = DB.get_comments_for_ue(ue_id),
+            creation_time = creation
+        )
+
+    @staticmethod
+    def get_ue_comment(comment_id):
+        SQL = "SELECT * FROM Comments WHERE ID = %s"
+        DB.cur.execute(SQL, (comment_id, ))
+        result = DB.cur.fetchone()
+        if not result:
+            return None
+
+        comment_id, ue_id, author, content, timestamp = result
+        return classes.UEComment(
+            comment_id = comment_id,
+            ue_id = ue_id,
+            author = author,
+            content = content,
+            creation_time = timestamp
         )
 
     @staticmethod
     def add_ue(ue : classes.UE):
-        SQL = "INSERT INTO UE (Name) VALUES (%s)"
-        DB.cur.execute(SQL, (ue.name, ))
+        SQL = "INSERT INTO UE (Name, Creation) VALUES (%s, %s)"
+        DB.cur.execute(SQL, (ue.name, time.time()))
         DB.conn.commit()
 
     @staticmethod
@@ -65,15 +85,18 @@ class DB:
             return list()
 
         l = list()
-        for ue_id, name in res:
-            l.append(classes.UE(ue_id, name))
+        for ue_id, name, creation in res:
+            l.append(classes.UE(ue_id, name, creation_time = creation))
         return l
 
     @staticmethod
     def add_comment(comment : classes.UEComment):
-        SQL = "INSERT INTO Comments (UE_ID, Author, Content) VALUES (%s, %s, %s)"
-        DB.cur.execute(SQL, (comment.ue_id, comment.author, comment.content))
+        SQL = "INSERT INTO Comments (UE_ID, Author, Content, Creation) VALUES (%s, %s, %s, %s) RETURNING ID"
+        DB.cur.execute(SQL, (comment.ue_id, comment.author, comment.content, time.time()))
+        new_record_id,  = DB.cur.fetchone()
         DB.conn.commit()
+
+        return DB.get_ue_comment(new_record_id)
 
 DB.init()
 
@@ -83,8 +106,8 @@ if __name__ == '__main__':
         SQL = [
             "DROP SCHEMA public CASCADE;",
             "CREATE SCHEMA public;",
-            "CREATE TABLE UE (ID SERIAL PRIMARY KEY, Name TEXT)",
-            "CREATE TABLE Comments (ID SERIAL PRIMARY KEY, UE_ID INTEGER, Author TEXT, Content TEXT)"
+            "CREATE TABLE UE (ID SERIAL PRIMARY KEY, Name TEXT, Creation INTEGER)",
+            "CREATE TABLE Comments (ID SERIAL PRIMARY KEY, UE_ID INTEGER, Author TEXT, Content TEXT, Creation INTEGER)"
         ]
 
         for sql in SQL:
