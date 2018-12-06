@@ -231,4 +231,3 @@ if __name__ == '__main__':
             except Exception as e:
                 DB.conn.rollback()
                 print(type(e), e)
-

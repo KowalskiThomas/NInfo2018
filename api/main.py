@@ -4,6 +4,7 @@ import json
 from classes import *
 from db import DB
 import rer
+import weather
 
 app = Flask(__name__)
 
@@ -119,6 +120,22 @@ def get_announcements():
         ]
     })   
 
+@app.route('/weather/<coord>')
+def get_weather(coord):
+    try:
+        lat, lng = map(float, coord.split(","))
+    except:
+        return json.dumps({
+            "status": 401,
+            "message": "Wrong parameters."
+        })
+
+    w = weather.get_weather_list(lat, lng)
+
+    return json.dumps({
+        "status": 200,
+        "response": w
+    })
 
 if __name__ == '__main__':
     app.url_map.strict_slashes = False
