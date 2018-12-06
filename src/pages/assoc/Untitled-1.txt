@@ -1,0 +1,27 @@
+
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item color="none" id="assoc-list-item29">
+        <ion-avatar item-left>
+          <img src="assets/img/vvI0Lp0qRqmJjZsnEOq2_stone.PNG" />
+        </ion-avatar><button ion-button clear item-end>View</button>
+
+        <h2>
+          EcologIIE
+        </h2>
+      </ion-item>
+
+    </ion-item-sliding>
+
+    <ion-item id="assoc-list-item-container49">
+
+      <div id="assoc-markdown50" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="margin-top:0px;color:#000000;font-size:18px;">
+          <strong>
+            « Le dire c’est bien, le faire c’est mieux ! »
+          </strong>
+        </p>
+      </div>
+    </ion-item>
+
+  </ion-list>
