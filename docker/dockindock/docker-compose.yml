@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  api:
+    image: python:3
+    volumes:
+      - .api/:api
+    links:
+      - db
+    command: python main.py
+    
+  db:
+    image: postgres
+    volumes:
+      - ./db:/db
+    environment:
+    # with postgres
+      POSTGRES_DB: miammiam
+      POSTGRES_USER: rootdemiam
+      POSTGRES_PASSWORD: chaise123
