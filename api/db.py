@@ -64,7 +64,10 @@ class DB:
         if not res:
             return list()
 
-        return res
+        l = list()
+        for ue_id, name in res:
+            l.append(classes.UE(ue_id, name))
+        return l
 
     @staticmethod
     def add_comment(comment : classes.UEComment):

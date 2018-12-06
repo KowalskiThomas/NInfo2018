@@ -22,6 +22,12 @@ class UE:
             self.name
         )
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name
+        }
+
 class UEComment:
     def __init__(self, comment_id = None, ue_id = None, author = None, content = None):
         self.id = comment_id
@@ -42,3 +48,11 @@ class UEComment:
             author = self.author,
             content = self.content
         )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "ue_id": self.ue_id,
+            "author": self.author,
+            "content": self.content
+        }
