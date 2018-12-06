@@ -17,8 +17,8 @@
     <ion-icon name="sync"></ion-icon>
     Réinitialisation des données
   </button>
-  <ion-item>
-      <ion-label>Paris</ion-label>
-      <ion-datetime displayFormat="HH:mm" [(ngModel)]="parisTime"></ion-datetime>
-  </ion-item>
+  <button id="dead" ion-button icon-start on-click="showDrunk()" disabled>
+    <ion-icon name="time"></ion-icon>
+    Afficher l'heure du décès
+  </button>
 </ion-content>
