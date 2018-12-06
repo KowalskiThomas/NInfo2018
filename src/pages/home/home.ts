@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 @Component({
@@ -8,14 +7,16 @@ import { AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
+  const catchPhrase = "";
+
   constructor(private alertCtrl: AlertController) {
 
   }
 
   showPrompt() {
     const prompt = this.alertCtrl.create({
-      title: 'Login',
-      message: "Enter a name for this new album you're so keen on adding",
+      title: "Test ton taux d'alcoolémie !",
+      message: "Quelle est ta phrase préférée ?",
       inputs: [
         {
           name: 'title',
@@ -32,6 +33,7 @@ export class HomePage {
         {
           text: 'Save',
           handler: data => {
+            this.catchPhrase = data;
             console.log('Saved clicked');
           }
         }
@@ -39,5 +41,7 @@ export class HomePage {
     });
     prompt.present();
   }
+
+  
 
 }
