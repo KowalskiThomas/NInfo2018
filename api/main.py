@@ -2,6 +2,7 @@ from flask import Flask, request
 import json
 from db import DB
 from classes import *
+import rer
 
 app = Flask(__name__)
 
@@ -68,6 +69,22 @@ def add_comment_for_ue(ue_id):
     return json.dumps({
         "status": 200,
         "response": new_comment.to_dict() 
+    })
+
+@app.route('/rer/next')
+def all_next_rer():
+    next_rer = rer.get_next_rer()
+    return json.dumps({
+        "status": 200,
+        "response": next_rer
+    })
+
+@app.route('/rer/next/<count>')
+def next_count(count):
+    next_rer = rer.get_next_rer(count)
+    return json.dumps({
+        "status": 200,
+        "response": next_rer
     })
 
 if __name__ == '__main__':
