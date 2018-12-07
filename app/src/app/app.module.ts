@@ -44,7 +44,7 @@ import { RerPage } from '../pages/rer/rer';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Auth } from '../providers/auth/auth';
-import { MeteoProvider } from '../providers/meteo/meteo';
+
 
 @NgModule({
   declarations: [

@@ -39,7 +39,7 @@ export class AlcoolometrePage {
               console.log(this.catchPhrase);
             }
             else if (this.catchPhrase !== data.title && this.tmp === 0) {
-              this.drunkTime = this.drunkTime.toLocaleString();
+
               this.tmp++;
               document.getElementById('dead').removeAttribute('disabled');
               console.log(this.drunkTime);
