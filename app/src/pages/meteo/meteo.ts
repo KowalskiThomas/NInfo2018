@@ -1,16 +1,8 @@
-import { Observable } from 'rxjs/Observable';
-import { MeteoProvider } from './../../providers/meteo/meteo';
+
+import { Http } from '@angular/http';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
-
-/**
- * Generated class for the MeteoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -18,10 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'meteo.html',
 })
 export class MeteoPage {
-  meteo: Observable<any>;
+  meteos: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public Meteo: MeteoProvider) {
-    this.meteo = this.Meteo.getMeteo();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    this.http.get('http://51.75.94.199:5000/weather/48.6238,2.4296').map(res => res.json()).subscribe(data => {
+      this.meteos = data.response;
+      console.log(this.meteos);
+    });
+
   }
 
 }

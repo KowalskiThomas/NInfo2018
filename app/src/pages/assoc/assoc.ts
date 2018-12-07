@@ -7,8 +7,6 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'assoc.html'
 })
 
-
-
 export class AssocPage {
 
   public assocItem: Array<any>;

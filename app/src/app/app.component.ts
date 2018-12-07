@@ -1,5 +1,4 @@
-import { ChecklistPage } from './../pages/checklist/checklist';
-import { MeteoPage } from './../pages/meteo/meteo';
+
 
 import { LoginPage } from '../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
@@ -24,6 +23,8 @@ import { AdministrationPage } from '../pages/administration/administration';
 import { CommunicationPage } from '../pages/communication/communication';
 import { VieEtudiantePage } from '../pages/vie-etudiante/vie-etudiante';
 import { LogementColocPage } from '../pages/logement-coloc/logement-coloc';
+import { ChecklistPage } from './../pages/checklist/checklist';
+import { MeteoPage } from './../pages/meteo/meteo';
 
 import { HomePage } from '../pages/home/home';
 
