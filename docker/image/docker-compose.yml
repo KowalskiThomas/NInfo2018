@@ -1,0 +1,40 @@
+version: '2.1'
+
+services:
+  api:
+    image: pythonapini
+    volumes:
+      - "/home/debian/ninfo2018/api:/api"
+    command: python /api/main.py
+    environment:
+      VIRTUAL_HOST: dtc
+      DB_HOST: db
+      DB_DATABASE: nifo
+      DB_USERNAME: nifo
+      DB_PASSWORD: nympho
+      DB_CONNECTION: pgsql
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+
+
+  db:
+    image: postgres
+    ports:
+       - 5432:5432
+    environment:
+        POSTGRES_DB: ninfo
+        POSTGRES_USER: ninfo
+        POSTGRES_PASSWORD: nympho
+
+  web:
+    image: ionicni
+    working_dir: "/test"
+    ports:
+      - 80:8100
+    volumes:
+      - "/home/debian/ninfo2018/app:/test"
+    depends_on:
+      - db
+    command: ash -c "npm install && ionic serve"

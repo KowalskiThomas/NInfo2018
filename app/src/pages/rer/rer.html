@@ -9,7 +9,11 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>rer</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>RER</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,7 +24,7 @@
     <ion-list>
       <ion-row *ngFor="let train of trains">
         <ion-item>
-          <ion-col align-self: flex-start >{{train.hour}}</ion-col>
+          <ion-col align-self: flex-start>{{train.hour}}</ion-col>
           <ion-col align-self: center>{{train.terminus}}</ion-col>
           <ion-col align-self: flex-end>{{train.mission}}</ion-col>
         </ion-item>

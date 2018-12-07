@@ -10,9 +10,9 @@ export class AlcoolometrePage {
   constructor(private alertCtrl: AlertController) {
   }
 
-  const catchPhrase = "";
-  const drunkTime = new Date();
-  const tmp = 0;
+  catchPhrase = "";
+  drunkTime = new Date();
+  tmp = 0;
 
   showPrompt() {
     const prompt = this.alertCtrl.create({
@@ -39,7 +39,7 @@ export class AlcoolometrePage {
               console.log(this.catchPhrase);
             }
             else if (this.catchPhrase !== data.title && this.tmp === 0) {
-              this.drunkTime = this.drunkTime.toLocaleString();
+
               this.tmp++;
               document.getElementById('dead').removeAttribute('disabled');
               console.log(this.drunkTime);
@@ -73,7 +73,7 @@ export class AlcoolometrePage {
     this.drunkTime = new Date();
     this.catchPhrase = "";
     this.tmp = 0;
-    if (!document.getElementById('dead').hasAttribute('disabled')) document.getElementById('dead').setAttribute('disabled', true);
+    if (!document.getElementById('dead').hasAttribute('disabled')) document.getElementById('dead').setAttribute('disabled', 'true');
     console.log('Initialise clicked');
   }
 

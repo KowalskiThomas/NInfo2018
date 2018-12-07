@@ -8,4 +8,16 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page3"></ion-content>
+<ion-content padding>
+  <ion-card *ngFor="let article of articles">
+    <a href="{{article.url}}"><img src="{{article.urlToImage}}" /> </a>
+    <ion-card-content>
+      <ion-card-title>
+        {{article.title}}
+      </ion-card-title>
+      <p>
+        {{article.description}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

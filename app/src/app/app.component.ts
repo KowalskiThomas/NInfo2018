@@ -1,3 +1,4 @@
+import { TrafficPage } from './../pages/traffic/traffic';
 
 
 import { LoginPage } from '../pages/login/login';
@@ -29,6 +30,7 @@ import { AlcoolometrePage } from './../pages/alcoolometre/alcoolometre';
 import { RerPage } from './../pages/rer/rer';
 
 import { HomePage } from '../pages/home/home';
+import { NewsPage } from '../pages/news/news';
 
 
 @Component({
@@ -36,7 +38,7 @@ import { HomePage } from '../pages/home/home';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-  rootPage: any = LoginPage;
+  rootPage: any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -114,5 +116,13 @@ export class MyApp {
   goToRer(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(RerPage);
+  }
+  goToNews(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(NewsPage);
+  }
+  goToTraffic(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(TrafficPage);
   }
 }
