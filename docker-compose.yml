@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+
+  dkr:
+    image: agammon/nuitinfo
+    privileged: true
+    working_dir: "/dkr"
+    volumes:
+      - ".:/dkr"
+      - "/var/run/docker.sock:/var/run/docker.sock"
