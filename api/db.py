@@ -10,7 +10,7 @@ class DB:
     def init():
         try:
             DB.conn = psycopg2.connect(
-                "dbname='ninfo' user='ninfo' host='localhost' password='nympho'"
+                "dbname='ninfo' user='ninfo' host='db' password='nympho'"
             )
         except:
             print("Couldn't connect to database")
