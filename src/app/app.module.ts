@@ -36,7 +36,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Firebase } from '@ionic-native/firebase';
-import { TrainProvider } from '../providers/train/train';
 
 @NgModule({
   declarations: [
@@ -64,7 +63,7 @@ import { TrainProvider } from '../providers/train/train';
     Semestre4Page,
     Semestre5Page,
     AlcoolometrePage,
-    Rer
+    RerPage
   ],
   imports: [
     BrowserModule,
@@ -97,13 +96,13 @@ import { TrainProvider } from '../providers/train/train';
     Semestre4Page,
     Semestre5Page,
     AlcoolometrePage,
-    Rer
+    RerPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    TrainProvider
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
+
   ]
 })
 export class AppModule { }
