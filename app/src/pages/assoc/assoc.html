@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Assoc
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page8">
+
+  <form id="assoc-form1">
+    <ion-searchbar placeholder="Filter" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>
+  </form>
+
+  <ion-list>
+
+    <div *ngFor="let item of assocItem">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="{{item.assocPresImage}}" />
+        </ion-avatar><button ion-button clear item-end>View</button>
+        <h2>
+          {{item.assocTitle}}
+        </h2>
+      </ion-item>
+
+      <ion-item>
+        <div id="assoc-markdown8" style="text-align:center;" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;font-size:18px;">
+            <strong>
+              {{item.assocSlogan}}
+            </strong>
+          </p>
+        </div>
+      </ion-item>
+    </div>
+  </ion-list>
+
+</ion-content>
