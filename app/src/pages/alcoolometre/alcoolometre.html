@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Alcoolomètre
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page2">
+  <button ion-button icon-start on-click="showPrompt()">
+    <ion-icon name="beer"></ion-icon>
+    Teste ton taux d'alcoolémie !
+  </button>
+  <button ion-button icon-start on-click="initialise()">
+    <ion-icon name="sync"></ion-icon>
+    Réinitialisation des données
+  </button>
+  <button id="dead" ion-button icon-start on-click="showDrunk()" disabled>
+    <ion-icon name="time"></ion-icon>
+    Afficher l'heure du décès
+  </button>
+</ion-content>

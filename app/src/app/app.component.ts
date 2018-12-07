@@ -25,6 +25,8 @@ import { VieEtudiantePage } from '../pages/vie-etudiante/vie-etudiante';
 import { LogementColocPage } from '../pages/logement-coloc/logement-coloc';
 import { ChecklistPage } from './../pages/checklist/checklist';
 import { MeteoPage } from './../pages/meteo/meteo';
+import { AlcoolometrePage } from './../pages/alcoolometre/alcoolometre';
+import { RerPage } from './../pages/rer/rer';
 
 import { HomePage } from '../pages/home/home';
 
@@ -104,5 +106,13 @@ export class MyApp {
   } goToChecklist(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(ChecklistPage);
+  }
+  goToAlcoolometre(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(AlcoolometrePage);
+  }
+  goToRer(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(RerPage);
   }
 }

@@ -34,6 +34,8 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { IonicStorageModule } from '@ionic/storage';
 import { MeteoPage } from '../pages/meteo/meteo';
+import { AlcoolometrePage } from '../pages/alcoolometre/alcoolometre';
+import { RerPage } from '../pages/rer/rer';
 
 
 
@@ -71,7 +73,9 @@ import { MeteoProvider } from '../providers/meteo/meteo';
     LoginPage,
     SignupPage,
     MeteoPage,
-    ChecklistPage
+    ChecklistPage,
+    AlcoolometrePage,
+    RerPage
   ],
   imports: [
     BrowserModule,
@@ -107,7 +111,9 @@ import { MeteoProvider } from '../providers/meteo/meteo';
     LoginPage,
     SignupPage,
     MeteoPage,
-    ChecklistPage
+    ChecklistPage,
+    AlcoolometrePage,
+    RerPage
   ],
   providers: [
     StatusBar,
@@ -121,4 +127,3 @@ import { MeteoProvider } from '../providers/meteo/meteo';
 })
 
 export class AppModule { }
-
