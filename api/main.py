@@ -150,7 +150,7 @@ def get_weather(coord):
 
 @app.route('/routes/<orig>,<dest>')
 def get_routes(orig, dest):
-    result : dict = routes.get_routes(orig, dest)
+    result = routes.get_routes(orig, dest)
     if result is None:
         return json.dumps({
             "status": 404,
