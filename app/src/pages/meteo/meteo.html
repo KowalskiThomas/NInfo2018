@@ -10,11 +10,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-content>
-    <ion-list>
-      <ion-item *ngFor="let meteo of meteos">
-        {{meteo.datetime}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
+
+  <ion-card *ngFor="let meteo of meteos">
+    <ion-card-header>
+      {{meteo.datetime}}
+    </ion-card-header>
+    <ion-card-content>
+      Temperature : {{meteo.temperature}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
