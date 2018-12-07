@@ -4,7 +4,7 @@ services:
   api:
     image: pythonapini
     volumes:
-      - "/home/debian/ninfo2018/api:/api"
+      - "/tetesdepipe/api:/api"
     command: python /api/main.py
     environment:
       VIRTUAL_HOST: dtc
@@ -34,7 +34,7 @@ services:
     ports:
       - 80:8100
     volumes:
-      - "/home/debian/ninfo2018/app:/test"
+      - "/tetesdepipe/app:/test"
     depends_on:
       - db
     command: ash -c "npm install && ionic serve"

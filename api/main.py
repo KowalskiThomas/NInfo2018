@@ -1,4 +1,5 @@
 from flask import Flask, request
+from flask_cors import CORS
 import json
 
 from classes import *
@@ -8,6 +9,7 @@ import routes
 import weather
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -148,7 +150,7 @@ def get_weather(coord):
 
 @app.route('/routes/<orig>,<dest>')
 def get_routes(orig, dest):
-    result : dict = routes.get_routes(orig, dest)
+    result = routes.get_routes(orig, dest)
     if result is None:
         return json.dumps({
             "status": 404,
