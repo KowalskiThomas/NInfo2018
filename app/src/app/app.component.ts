@@ -38,7 +38,7 @@ import { NewsPage } from '../pages/news/news';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-  rootPage: any = LoginPage;
+  rootPage: any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
