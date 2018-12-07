@@ -3,10 +3,9 @@ version: '2.1'
 services:
 
   dkr:
-    image: docker
+    image: masterdocker2
     privileged: true
     working_dir: "/dkr"
     volumes:
       - ".:/dkr"
       - "/var/run/docker.sock:/var/run/docker.sock"
-    command: docker ps -a
