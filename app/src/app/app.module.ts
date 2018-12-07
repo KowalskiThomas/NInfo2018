@@ -34,7 +34,6 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { IonicStorageModule } from '@ionic/storage';
 import { MeteoPage } from '../pages/meteo/meteo';
-import { ChecklistPage } from '../pages/checklist/checklist';
 
 
 

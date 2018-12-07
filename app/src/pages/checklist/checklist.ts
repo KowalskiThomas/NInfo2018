@@ -8,18 +8,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-checklist',
   templateUrl: 'checklist.html',
 })
 export class ChecklistPage {
 
+  public assocItem: Array<any>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ChecklistPage');
+  ngOnInit() {
+    this.setItems();
+  }
+
+  setItems() {
+    this.assocItem = [
+      {
+        checklistTitle: 'Chef, as-tu tes chaussettes ?',
+      },
+      {
+        checklistTitle: 'T\'as pas oublié ton portable ?',
+      },
+      {
+        checklistTitle: 'T\'es sûr d\'avoir les clés de chez toi ?',
+      },
+      {
+        checklistTitle: 'T\'as pensé à ta veste et à ton pull ?',
+      }
+    ];
   }
 
 }
