@@ -4,6 +4,7 @@ import json
 from classes import *
 from db import DB
 import rer
+import routes
 import weather
 
 app = Flask(__name__)
@@ -143,6 +144,20 @@ def get_weather(coord):
     return json.dumps({
         "status": 200,
         "response": w
+    })
+
+@app.route('/routes/<orig>,<dest>')
+def get_routes(orig, dest):
+    result : dict = routes.get_routes(orig, dest)
+    if result is None:
+        return json.dumps({
+            "status": 404,
+            "message": "Could not geocode your location or could not find routes."
+        })
+
+    return json.dumps({
+        "status": 200,
+        "response": result
     })
 
 if __name__ == '__main__':
