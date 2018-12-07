@@ -1,3 +1,5 @@
+import { ChecklistPage } from './../pages/checklist/checklist';
+import { MeteoPage } from './../pages/meteo/meteo';
 
 import { LoginPage } from '../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
@@ -36,7 +38,7 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      // Here you can do any higher level native things you might negoed.
       statusBar.styleDefault();
       splashScreen.hide();
     });
@@ -47,6 +49,9 @@ export class MyApp {
   } goToSemestre1(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(Semestre1Page);
+  } goToMeteo(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(MeteoPage);
   } goToSemestre2(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(Semestre2Page);
@@ -95,5 +100,8 @@ export class MyApp {
   } goToHome(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(HomePage);
+  } goToChecklist(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(ChecklistPage);
   }
 }

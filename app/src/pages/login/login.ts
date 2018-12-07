@@ -18,7 +18,6 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController) {
 
   }
-
   ionViewDidLoad() {
 
     this.showLoader();
@@ -66,6 +65,5 @@ export class LoginPage {
     });
 
     this.loading.present();
-
   }
 }

@@ -1,3 +1,5 @@
+import { ChecklistPage } from './../pages/checklist/checklist';
+
 /* App module  */
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,12 +33,16 @@ import { Semestre5Page } from '../pages/semestre5/semestre5';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { IonicStorageModule } from '@ionic/storage';
+import { MeteoPage } from '../pages/meteo/meteo';
+import { ChecklistPage } from '../pages/checklist/checklist';
+
 
 
 /* App component */
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Auth } from '../providers/auth/auth';
+import { MeteoProvider } from '../providers/meteo/meteo';
 
 @NgModule({
   declarations: [
@@ -65,7 +71,8 @@ import { Auth } from '../providers/auth/auth';
     Semestre5Page,
     LoginPage,
     SignupPage,
-
+    MeteoPage,
+    ChecklistPage
   ],
   imports: [
     BrowserModule,
@@ -99,15 +106,20 @@ import { Auth } from '../providers/auth/auth';
     Semestre4Page,
     Semestre5Page,
     LoginPage,
-    SignupPage
+    SignupPage,
+    MeteoPage,
+    ChecklistPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Auth,
+    MeteoProvider,
     Storage,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    MeteoProvider,
   ]
 })
 
 export class AppModule { }
+

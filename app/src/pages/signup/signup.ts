@@ -1,21 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, IonicPage } from 'ionic-angular';
 import { Auth } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 
-
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
 })
 export class SignupPage {
+
 
   role: string;
   email: string;
@@ -24,6 +18,7 @@ export class SignupPage {
   constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController) {
 
   }
+
   register() {
 
     this.showLoader();

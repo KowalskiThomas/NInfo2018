@@ -1,0 +1,321 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      edt
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page10">
+  <!-- 1A form  -->
+
+  <div>
+    <form (ngSubmit)="getData(constructUrl_1A())">
+
+      <ion-item>
+        <ion-label>groupe</ion-label>
+        <ion-select name="group" [(ngModel)]="firstYear.group" interface="popover">
+          <ion-option value="GR1">groupe1</ion-option>
+          <ion-option value="GR2">groupe 2</ion-option>
+          <ion-option value="GR3">groupe 3</ion-option>
+          <ion-option value="GR4">groupe 4</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Selectioner le groupe de com</ion-label>
+        <ion-select name="groupCom" [(ngModel)]="firstYear.groupcom" interface="popover">
+          <ion-option value="GR+A">groupe A</ion-option>
+          <ion-option value="GR+B">groupe B</ion-option>
+          <ion-option value="GR+C">groupe C</ion-option>
+          <ion-option value="GR+D">groupe D</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Selectioner la langue</ion-label>
+        <ion-select name="langue" [(ngModel)]="firstYear.langue" interface="popover">
+
+          <ion-option value="allemand1">Allemand 1</ion-option>
+          <ion-option value="allemand2">Allemand 2</ion-option>
+          <ion-option value="allemand3">Allemand 3</ion-option>
+
+          <ion-option value="espagnol1">espagnol 1</ion-option>
+          <ion-option value="espagnol2">espagnol 2</ion-option>
+          <ion-option value="espagnol3">espagnol 3</ion-option>
+
+          <ion-option value="chinois1">Chinois 1</ion-option>
+          <ion-option value="chinois2">Chinois 2</ion-option>
+
+          <ion-option value="japonais1">Japonais 1</ion-option>
+          <ion-option value="japonais2">Japonais 2</ion-option>
+
+          <ion-option value="portugais">Portugais</ion-option>
+
+          <ion-option value="russe">Russe</ion-option>
+
+          <ion-option value="anglais+soutien">Soutien d'anglais</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+      <button ion-button type="submit" block>submit</button>
+    </form>
+  </div>
+
+  <!--2A form  -->
+  <div>
+    <form (ngSubmit)="getData(constructUrl_2A())">
+
+      <ion-item>
+        <ion-label>groupe</ion-label>
+        <ion-select name="group" [(ngModel)]="secondYear.group" interface="popover">
+          <ion-option value="GR1">groupe 1</ion-option>
+          <ion-option value="GR2">groupe 2</ion-option>
+          <ion-option value="GR3">groupe 3</ion-option>
+          <ion-option value="GR4">groupe 4</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Selectioner le groupe de com</ion-label>
+        <ion-select name="groupCom" [(ngModel)]="secondYear.groupcom" interface="popover">
+          <ion-option value="GR+A">groupe A</ion-option>
+          <ion-option value="GR+B">groupe B</ion-option>
+          <ion-option value="GR+C">groupe C</ion-option>
+          <ion-option value="GR+D">groupe D</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Selectioner la langue</ion-label>
+        <ion-select name="langue" [(ngModel)]="secondYear.langue" interface="popover">
+
+          <ion-option value="allemand1">Allemand 1</ion-option>
+          <ion-option value="allemand2">Allemand 2</ion-option>
+          <ion-option value="allemand3">Allemand 3</ion-option>
+
+          <ion-option value="espagnol1">espagnol 1</ion-option>
+          <ion-option value="espagnol2">espagnol 2</ion-option>
+          <ion-option value="espagnol3">espagnol 3</ion-option>
+
+          <ion-option value="chinois1">Chinois 1</ion-option>
+          <ion-option value="chinois2">Chinois 2</ion-option>
+
+          <ion-option value="japonais1">Japonais 1</ion-option>
+          <ion-option value="japonais2">Japonais 2</ion-option>
+
+          <ion-option value="portugais">Portugais</ion-option>
+
+          <ion-option value="russe">Russe</ion-option>
+
+          <ion-option value="anglais+soutien">Soutien d'anglais</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Options 1</ion-label>
+        <ion-select name="option1" [(ngModel)]="secondYear.options_2A_1" interface="popover">
+          <ion-option value="op21.1">PIMA</ion-option>
+          <ion-option value="op21.1g1">PIMA groupe 1</ion-option>
+          <ion-option value="op21.1g2">PIMA groupe 2</ion-option>
+          <ion-option value="op21.1g3">PIMA groupe 3</ion-option>
+          <ion-option value="op21.1g4">PIMA groupe 4</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 2</ion-label>
+        <ion-select name="option2" [(ngModel)]="secondYear.options_2A_2" interface="popover">
+          <ion-option value="op22.1">IPF</ion-option>
+          <ion-option value="op22.1g1">IPF groupe 1</ion-option>
+          <ion-option value="op22.1g2">IPF groupe 2</ion-option>
+          <ion-option value="op22.1g3">IPF groupe 3</ion-option>
+
+          <ion-option value="op21.2">PST</ion-option>
+          <ion-option value="op21.2g1">PST groupe 1</ion-option>
+          <ion-option value="op21.2g2">PST groupe 2</ion-option>
+
+          <ion-option value="op21.3">SE1</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 3</ion-label>
+        <ion-select name="option3" [(ngModel)]="secondYear.options_2A_3" interface="popover">
+          <ion-option value="op23.1">LSF VVL</ion-option>
+          <ion-option value="op23.1g1">LSF VVL groupe 1</ion-option>
+          <ion-option value="op23.1g2">LSF VVL groupe 2</ion-option>
+          <ion-option value="op23.1g3">LSF VVL groupe 3</ion-option>
+
+          <ion-option value="op23.2">MPR</ion-option>
+          <ion-option value="op23.2g1">MPR groupe 1</ion-option>
+          <ion-option value="op23.2g2">MPR groupe 2</ion-option>
+          <ion-option value="op23.2g2">MPR groupe 3</ion-option>
+
+          <ion-option value="op23.3">IMA</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 4</ion-label>
+        <ion-select name="option4" [(ngModel)]="secondYear.options_2A_4" interface="popover">
+          <ion-option value="op24.1">ASS-COM</ion-option>
+          <ion-option value="op24.1g1">ASS-COM groupe 1</ion-option>
+          <ion-option value="op24.1g2">ASS-COM groupe 2</ion-option>
+
+          <ion-option value="op24.2">PAP</ion-option>
+          <ion-option value="op24.2g1">PAP groupe 1</ion-option>
+          <ion-option value="op24.2g2">PAP groupe 2</ion-option>
+
+          <ion-option value="op24.3">PP</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 5</ion-label>
+        <ion-select name="option5" [(ngModel)]="secondYear.options_2A_5" interface="popover">
+          <ion-option value="op25.1">MAD</ion-option>
+          <ion-option value="op25.1g1">MAD groupe 1</ion-option>
+          <ion-option value="op25.1g2">MAD groupe 2</ion-option>
+
+          <ion-option value="op25.2">IGL</ion-option>
+          <ion-option value="op25.2g1">IGL groupe 1</ion-option>
+          <ion-option value="op25.2g2">IGL groupe 2</ion-option>
+
+          <ion-option value="op25.3">ASE</ion-option>
+          <ion-option value="op25.2g1">ASE groupe 1</ion-option>
+          <ion-option value="op25.2g2">ASE groupe 2</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 6</ion-label>
+        <ion-select name="option6" [(ngModel)]="secondYear.options_2A_6" interface="popover">
+          <ion-option value="op26.1">MRO</ion-option>
+          <ion-option value="op26.1g1">MRO groupe 1</ion-option>
+          <ion-option value="op26.1g2">MRO groupe 2</ion-option>
+          <ion-option value="op26.1g2">MRO groupe 3</ion-option>
+
+          <ion-option value="op26.2">SRM</ion-option>
+          <ion-option value="op26.2g1">SRM groupe 1</ion-option>
+          <ion-option value="op26.2g2">SRM groupe 2</ion-option>
+
+          <ion-option value="op26.3">IPS</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tronc Commun</ion-label>
+        <ion-select name="troncCommun" [(ngModel)]="secondYear.tronc_commun" interface="popover">
+          <ion-option value="1">SGE</ion-option>
+          <ion-option value="2">BIP</ion-option>
+          <ion-option value="3">SM</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <button ion-button type="submit" block>submit</button>
+    </form>
+  </div>
+
+  <!--3A form  -->
+
+  <div>
+    <form (ngSubmit)="getData(constructUrl_3A())">
+
+      <ion-item>
+        <ion-label>groupe</ion-label>
+        <ion-select name="group" [(ngModel)]="thirdYear.group" interface="popover">
+          <ion-option value="GR1">groupe 1</ion-option>
+          <ion-option value="GR2">groupe 2</ion-option>
+          <ion-option value="GR3">groupe 3</ion-option>
+          <ion-option value="GR4">groupe 4</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Selectioner la langue</ion-label>
+        <ion-select name="langue" [(ngModel)]="thirdYear.langue" interface="popover">
+
+          <ion-option value="allemand1">Allemand 1</ion-option>
+          <ion-option value="allemand2">Allemand 2</ion-option>
+          <ion-option value="allemand3">Allemand 3</ion-option>
+
+          <ion-option value="espagnol1">espagnol 1</ion-option>
+          <ion-option value="espagnol2">espagnol 2</ion-option>
+          <ion-option value="espagnol3">espagnol 3</ion-option>
+
+          <ion-option value="chinois1">Chinois 1</ion-option>
+          <ion-option value="chinois2">Chinois 2</ion-option>
+
+          <ion-option value="japonais1">Japonais 1</ion-option>
+          <ion-option value="japonais2">Japonais 2</ion-option>
+
+          <ion-option value="portugais">Portugais</ion-option>
+
+          <ion-option value="russe">Russe</ion-option>
+
+          <ion-option value="anglais+soutien">Soutien d'anglais</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 1</ion-label>
+        <ion-select name="option1" [(ngModel)]="thirdYear.options_3A_1" interface="popover">
+          <ion-option value="op31.1">MQS</ion-option>
+
+          <ion-option value="op31.2">PDS</ion-option>
+
+          <ion-option value="op31.3">R2IA</ion-option>
+          <ion-option value="op31.3g1">R2IA groupe 1</ion-option>
+
+          <ion-option value="op31.4">MER</ion-option>
+          <ion-option value="op31.4g1">MER groupe 1</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 3</ion-label>
+        <ion-select name="option2" [(ngModel)]="thirdYear.options_3A_3" interface="popover">
+          <ion-option value="op33.1">MSA</ion-option>
+          <ion-option value="op33.1g2">MSA groupe 1</ion-option>
+
+          <ion-option value="op33.2">PROG1</ion-option>
+          <ion-option value="op33.2g1">PROG1 groupe 1</ion-option>
+
+          <ion-option value="op33.3">NTOE</ion-option>
+
+          <ion-option value="op33.4">IEC</ion-option>
+          <ion-option value="op33.4g1">IEC groupe 1</ion-option>
+
+          <ion-option value="op33.5">CA</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Options 5</ion-label>
+        <ion-select name="option3" [(ngModel)]="thirdYear.options_3A_5" interface="popover">
+
+          <ion-option value="op35.1">MFN</ion-option>
+
+          <ion-option value="op35.2">SEC1</ion-option>
+
+          <ion-option value="op35.3">OPT1</ion-option>
+
+        </ion-select>
+      </ion-item>
+
+      <button ion-button type="submit" block>submit</button>
+    </form>
+  </div>
+
+</ion-content>
