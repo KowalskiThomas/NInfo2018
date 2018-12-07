@@ -14,6 +14,14 @@ def get_next_rer(count = None):
     else:
         return j[:min((count, len(j)))]
 
+def get_next_rer_test(count = None):
+    with open("sample_rer.json") as f:
+        j = json.load(f)
+
+    if count is None:
+        return j
+    else:
+        return j[:min((count, len(j)))]
 
 if __name__ == '__main__':
     print(get_next_rer(1))

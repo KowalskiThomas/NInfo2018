@@ -75,7 +75,11 @@ def add_comment_for_ue(ue_id):
 
 @app.route('/rer/next')
 def all_next_rer():
-    next_rer = rer.get_next_rer()
+    if "test" in request.args:
+        next_rer = rer.get_next_rer_test()
+    else:
+        next_rer = rer.get_next_rer()
+    
     return json.dumps({
         "status": 200,
         "response": next_rer
@@ -83,7 +87,11 @@ def all_next_rer():
 
 @app.route('/rer/next/<count>')
 def next_count(count):
-    next_rer = rer.get_next_rer(count)
+    if "test" in request.args:
+        next_rer = rer.get_next_rer_test(count)
+    else:
+        next_rer = rer.get_next_rer(count)
+
     return json.dumps({
         "status": 200,
         "response": next_rer
