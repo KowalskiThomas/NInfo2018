@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   dkr:
-    image: masterdocker2
+    image: agammon/nuitinfo
     privileged: true
     working_dir: "/dkr"
     volumes:
