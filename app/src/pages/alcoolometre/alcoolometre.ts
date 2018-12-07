@@ -10,9 +10,9 @@ export class AlcoolometrePage {
   constructor(private alertCtrl: AlertController) {
   }
 
-  const catchPhrase = "";
-  const drunkTime = new Date();
-  const tmp = 0;
+  catchPhrase = "";
+  drunkTime = new Date();
+  tmp = 0;
 
   showPrompt() {
     const prompt = this.alertCtrl.create({
