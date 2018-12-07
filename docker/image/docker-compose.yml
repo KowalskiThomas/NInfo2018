@@ -4,7 +4,7 @@ services:
   api:
     image: pythonapini
     volumes:
-      - "/home/agammon/travail/nuitinfo/NInfo2018/api:/api"
+      - "/home/debian/ninfo2018/api:/api"
     command: python /api/main.py
     environment:
       VIRTUAL_HOST: dtc
@@ -13,6 +13,8 @@ services:
       DB_USERNAME: nifo
       DB_PASSWORD: nympho
       DB_CONNECTION: pgsql
+    ports:
+      - 5000:5000
     depends_on:
       - db
 
@@ -32,7 +34,7 @@ services:
     ports:
       - 80:8100
     volumes:
-      - "/home/agammon/travail/nuitinfo/NInfo2018/app:/test"
+      - "/home/debian/ninfo2018/app:/test"
     depends_on:
       - db
     command: ash -c "npm install && ionic serve"
