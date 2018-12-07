@@ -23,7 +23,7 @@ RUN apk update && \
 # INSTALL IONIC AND CORDOVA
 RUN npm install -g cordova ionic
 
-#INSTALL Graddle
+#INSTALL Gradle
 RUN mkdir -p ${GRADLE_HOME} && \
   curl -L https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip > /tmp/gradle.zip && \
   unzip /tmp/gradle.zip -d ${GRADLE_HOME} && \
@@ -36,15 +36,42 @@ RUN mkdir -p ${ANDROID_HOME} && \
   unzip /tmp/tools.zip -d ${ANDROID_HOME}
 
 # INSTALL GLIBC
-RUN curl -L https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub > /etc/apk/keys/sgerrand.rsa.pub && \
-  curl -L ${GLIB_PACKAGE_BASE_URL}/${GLIB_VERSION}/glibc-${GLIB_VERSION}.apk > /tmp/glibc.apk && \
-  curl -L ${GLIB_PACKAGE_BASE_URL}/${GLIB_VERSION}/glibc-bin-${GLIB_VERSION}.apk > /tmp/glibc-bin.apk && \
-  apk add /tmp/glibc-bin.apk /tmp/glibc.apk
+RUN curl -Lo /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
+  curl -Lo glibc.apk "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIB_VERSION}/glibc-${GLIB_VERSION}.apk" && \
+  curl -Lo glibc-bin.apk "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIB_VERSION}/glibc-bin-${GLIB_VERSION}.apk" && \
+  apk add glibc-bin.apk glibc.apk && \
+  /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
+  echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
+  apk del curl && \
+  rm -rf glibc.apk glibc-bin.apk /var/cache/apk/*
+
+  #FILES DELETION
+  RUN rm -rf /tmp/* /var/cache/apk/*
+  RUN apk update
+
+
+
+RUN apk add --no-cache python3 \
+  && python3 -m ensurepip \
+  && pip3 install --upgrade pip setuptools \
+  && pip install --upgrade setuptools\
+  && rm -r /usr/lib/python*/ensurepip && \
+  if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
+  if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
+  rm -r /root/.cache
 
 # CONFIGURATION
 RUN echo y | android update sdk --no-ui -a --filter platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
 
-#FILES DELETION
-RUN rm -rf /tmp/* /var/cache/apk/*
+RUN apk add gcc
+RUN apk add postgresql-dev
+RUN apk add python3-dev
+RUN apk add linux-headers musl-dev
+
+
+RUN pip install --trusted-host pypi.python.org flask
+RUN pip install psycopg2
+
+RUN apk add --update nodejs
 
 CMD ash
