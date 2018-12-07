@@ -73,7 +73,7 @@ export class AlcoolometrePage {
     this.drunkTime = new Date();
     this.catchPhrase = "";
     this.tmp = 0;
-    if (!document.getElementById('dead').hasAttribute('disabled')) document.getElementById('dead').setAttribute('disabled', true);
+    if (!document.getElementById('dead').hasAttribute('disabled')) document.getElementById('dead').setAttribute('disabled', 'true');
     console.log('Initialise clicked');
   }
 

@@ -1,3 +1,4 @@
+import { TrafficPage } from './../pages/traffic/traffic';
 
 
 import { LoginPage } from '../pages/login/login';
@@ -119,5 +120,9 @@ export class MyApp {
   goToNews(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(NewsPage);
+  }
+  goToTraffic(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(TrafficPage);
   }
 }

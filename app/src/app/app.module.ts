@@ -1,3 +1,4 @@
+import { TrafficPage } from './../pages/traffic/traffic';
 import { ChecklistPage } from './../pages/checklist/checklist';
 
 /* App module  */
@@ -75,7 +76,8 @@ import { MeteoProvider } from '../providers/meteo/meteo';
     MeteoPage,
     ChecklistPage,
     AlcoolometrePage,
-    RerPage
+    RerPage,
+    TrafficPage
   ],
   imports: [
     BrowserModule,
@@ -113,16 +115,15 @@ import { MeteoProvider } from '../providers/meteo/meteo';
     MeteoPage,
     ChecklistPage,
     AlcoolometrePage,
-    RerPage
+    RerPage,
+    TrafficPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Auth,
-    MeteoProvider,
     Storage,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    MeteoProvider,
   ]
 })
 
