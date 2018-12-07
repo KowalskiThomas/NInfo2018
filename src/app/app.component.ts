@@ -20,6 +20,8 @@ import { AdministrationPage } from '../pages/administration/administration';
 import { CommunicationPage } from '../pages/communication/communication';
 import { VieEtudiantePage } from '../pages/vie-etudiante/vie-etudiante';
 import { LogementColocPage } from '../pages/logement-coloc/logement-coloc';
+import { AlcoolometrePage } from '../pages/alcoolometre/alcoolometre';
+import { RerPage } from '../pages/rer/rer';
 
 
 import { HomePage } from '../pages/home/home';
@@ -95,5 +97,13 @@ export class MyApp {
   } goToHome(params) {
     if (!params) params = {};
     this.navCtrl.setRoot(HomePage);
+  }
+  goToAlcoolometre(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(AlcoolometrePage);
+  }
+  goToRer(params) {
+    if (!params) params = {};
+    this.navCtrl.setRoot(RerPage);
   }
 }

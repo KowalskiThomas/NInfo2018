@@ -28,12 +28,15 @@ import { Semestre2Page } from '../pages/semestre2/semestre2';
 import { Semestre3Page } from '../pages/semestre3/semestre3';
 import { Semestre4Page } from '../pages/semestre4/semestre4';
 import { Semestre5Page } from '../pages/semestre5/semestre5';
+import { AlcoolometrePage } from '../pages/alcoolometre/alcoolometre';
+import { RerPage } from '../pages/rer/rer';
 
 /* App component */
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Firebase } from '@ionic-native/firebase';
+import { TrainProvider } from '../providers/train/train';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,9 @@ import { Firebase } from '@ionic-native/firebase';
     Semestre2Page,
     Semestre3Page,
     Semestre4Page,
-    Semestre5Page
+    Semestre5Page,
+    AlcoolometrePage,
+    Rer
   ],
   imports: [
     BrowserModule,
@@ -90,12 +95,15 @@ import { Firebase } from '@ionic-native/firebase';
     Semestre2Page,
     Semestre3Page,
     Semestre4Page,
-    Semestre5Page
+    Semestre5Page,
+    AlcoolometrePage,
+    Rer
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    TrainProvider
   ]
 })
 export class AppModule { }
